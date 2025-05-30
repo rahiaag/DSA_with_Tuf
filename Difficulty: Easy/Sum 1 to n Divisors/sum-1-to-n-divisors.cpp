@@ -1,22 +1,12 @@
 class Solution {
   public:
-  
-  int summation(int n){
-      int sum=0;
-      for (int i=1;i<=n;i++){
-          if (n%i==0){
-          sum+=i;
-          }
-      }
-      return sum;
-  }
     long long sumOfDivisors(long long n) {
-        int totalSum=0;
-        
-        for (int i=1;i<=n;i++){
-            totalSum+=summation(i);
-        }
-        return totalSum;
-        
+    
+    long long totalSum = 0;
+    for (long long i = 1; i <= n; i++) {
+        totalSum += i * (n / i); // i is added (n / i) times
+    }
+    return totalSum;
+
     }
 };
