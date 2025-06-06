@@ -11,29 +11,35 @@ class Solution {
         int j=0;
     
         while (i<n &&j<m){
-            if (a[i]<b[j]){
-                if (temp.empty()|| temp.back()!=a[i])
+            if (a[i]<=b[j]){
+                if (temp.empty()|| temp.back()!=a[i]){
                 temp.push_back(a[i]);
+                }
                 i++;
+                
             }
             else{
-                if (temp.empty()|| temp.back()!=b[j])
+                if (temp.empty()|| temp.back()!=b[j]){
                 temp.push_back(b[j]);
+                }
                 j++;
+                
             }
         }
         
         while (i<n){
-                if (temp.empty()|| temp.back()!=a[i])
+                if (temp.empty()|| temp.back()!=a[i]){
                 temp.push_back(a[i]);
+                }
                 i++;
                 
             }
-        
         while (j<m){
-                if (temp.empty()|| temp.back()!=b[j])
+                if (temp.empty()|| temp.back()!=b[j]){
                 temp.push_back(b[j]);
+                }
                 j++;
+                
         }
         // return vector with correct order of elements
         return temp;
@@ -41,6 +47,7 @@ class Solution {
 };
 
 /*
+here take care for the temp.empty() wala step
 using hashmap or hashset
 
 
