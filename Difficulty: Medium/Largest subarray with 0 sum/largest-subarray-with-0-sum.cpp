@@ -8,7 +8,6 @@ class Solution {
         int maxCount=0;
         unordered_map<int,int>mp;
         int preSum=0;
-        mp[0]=-1;
         
         for (int i=0;i<n;i++){
             preSum+=arr[i];
@@ -21,7 +20,7 @@ class Solution {
                 maxCount=max(maxCount,i-mp[preSum]);
             }
             else{
-                mp[preSum]=i;
+                mp[preSum]=i;  //isme yeh wali condition bohot important hai
             }
         }
         return maxCount;
