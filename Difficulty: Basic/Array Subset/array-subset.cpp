@@ -5,21 +5,23 @@ class Solution {
         // Your code here
         int n=a.size();
         int m=b.size();
-        unordered_map<int,int>mp;
+        
         if (m>n){
             return false;
         }
+        unordered_map<int,int>mp;
         
         for (int i:a){
             mp[i]++;
         }
-        for (int i:b){
-            if (mp[i]==0){
+        
+        for (int i=0;i<m;i++){
+            if (mp[b[i]]==0){
                 return false;
             }
-            if (mp.find(i)!=mp.end())
-            mp[i]--;
-            
+            if (mp.find(b[i])!=mp.end()){
+                mp[b[i]]--;
+            }
         }
         return true;
     }
