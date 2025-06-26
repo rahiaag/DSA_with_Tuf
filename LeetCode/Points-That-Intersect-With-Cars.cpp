@@ -2,18 +2,17 @@ class Solution {
 public:
     int numberOfPoints(vector<vector<int>>& nums) {
         int n=nums.size();
+        set<int>st;
         sort(nums.begin(),nums.end());
 
-        unordered_map<int,int>mp;
+        for (auto i:nums){
+            int start=i[0];
+            int last=i[1];
 
-        for (auto interval:nums){
-            int first=interval[0];
-            int second=interval[1];
-            for (int j=first;j<=second;j++){
-                mp[j]++;
+            for (int j=start;j<=last;j++){
+                st.insert(j);
             }
-
         }
-        return mp.size();
+        return st.size();
     }
 };
