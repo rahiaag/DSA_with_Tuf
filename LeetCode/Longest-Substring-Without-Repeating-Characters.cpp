@@ -1,36 +1,46 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-      int n=s.size();
-      unordered_map<char,int>mp;
-      int l=0;
-      int maxCount=0;
-      for (int r=0;r<n;r++){
-        if (mp.find(s[r])!=mp.end()){
-            l=max(l,mp[s[r]]+1);  // where i have seen the last seen element move 1 step ahead from it
+       int n=s.size();
+       int l=0;
+       int r=0;
+       int maxCount=0;
+       unordered_map<char,int>mp;
+       while (r<n){
+        
+
+        while (mp.find(s[r])!=mp.end()){
+            mp[s[l]]--;
+            if (mp[s[l]]==0){
+                mp.erase(s[l]);
+            }
+            l++;
         }
-        mp[s[r]]=r;
+         mp[s[r]]++;
         maxCount=max(maxCount,r-l+1);
-      }
-      return maxCount;
+        r++;
+       }
+       return maxCount;
     }
 };
 
-
 /*
-        int n = s.size();
-        int maxCount=0;
-        for (int i = 0; i < n; i++) {
-            int count = 0;
-            unordered_map<char, int> mp;
-            for (int j = i; j < n; j++) {
-                if (mp.find(s[j]) != mp.end()) {
+Brute force
+i will use two loops and a hashmap and store the unique character and increase the count and whenever there is duplicate element presetn
+i will break it
+        int n=s.size();
+        int maxLen=0;
+        for (int i=0;i<n;i++){
+            unordered_map<char,int>mp;
+            int count=0;
+            for (int j=i;j<n;j++){
+                if (mp.find(s[j])!=mp.end()){
                     break;
                 }
                 mp[s[j]]++;
                 count++;
             }
-            maxCount = max(maxCount, count);
+            maxLen=max(maxLen,count);
         }
-        return maxCount;
-        */
+        return maxLen;
+    */
