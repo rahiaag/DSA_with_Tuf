@@ -1,10 +1,12 @@
-// User function Template for C++
+#include <iostream>
+using namespace std;
 
-bool checkPrime(int n){
-    if (n==2){
-        return true;
-    }
-    for (int i=2;i*i<=n;i++){
+bool isPrime(int n){
+    if (n==1)return false;
+    if (n==2 || n==3)return true;
+    if (n%2==0)return false;
+    
+    for (int i=3;i*i<=n;i+=2){
         if (n%i==0){
             return false;
         }
@@ -12,14 +14,16 @@ bool checkPrime(int n){
     return true;
 }
 
-int nextPrime(int n) {
-    int val=n+100;
-    int result=INT_MAX;
-    for (int i=n+1;i<val;i++){
-        if (checkPrime(i)==true){
-            result=min(result,i);
-        }
-    }
-    return result;
+int main() {
+    int n;
+    cin>>n;
     
+    int candidate=n+1;
+    while (true){
+        if (isPrime(candidate)){
+            cout<<candidate;
+            return 0;
+        }
+        candidate++;
+    }
 }
