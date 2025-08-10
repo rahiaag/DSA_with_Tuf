@@ -12,17 +12,19 @@ class Solution {
   public:
     Node *insertAtEnd(Node *head, int x) {
         // Code here
-        
         Node *temp=head;
-        Node *dummy=new Node(x);
-        dummy->next=NULL;
+        Node *curr=new Node(x);
         if (head==NULL){
-            return dummy;
+            return curr;
         }
+        curr->next=NULL;
         while (temp->next!=NULL){
             temp=temp->next;
         }
-        temp->next=dummy;
+        
+        temp->next=curr;
+        
+        
         return head;
         
     }
